@@ -6,4 +6,5 @@ if !exists('g:vscode')
   source $HOME\AppData\Local\nvim\settings\nerdcommenter.vim
   source $HOME\AppData\Local\nvim\settings\ctrlp.vim
   source $HOME\AppData\Local\nvim\settings\coc.vim
+  source $HOME\AppData\Local\nvim\settings\git.vim
 endif

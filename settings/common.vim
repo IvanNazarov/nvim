@@ -9,7 +9,7 @@
   set fileencoding=UTF-8
   set guifont=FuraCode\ Nerd\ Font:h14 
   set path+=**
-"  set wildmenu
+  set wildmenu
   set wildignore+=.git
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -81,7 +81,7 @@
   map <M-j> <c-w>+
   map <M-k> <c-w>-
 
-  let mapleader=","   " leader is comma
+  let mapleader=<space>   " leader is space
   
   " edit/reload vimrc
   nmap <leader>ev :e $MYVIMRC<CR>
@@ -123,4 +123,36 @@
   "command Wd write|bdelete
   cnorea wd w\|:bd
 
+  
+  "session support
+  fu! CreateSess()
+    call mkdir(expand('%:p:h') . '/.vim', 'p')
+    execute 'mksession! %:p:h/.vim/session.vim'
+  endfunction
 
+  fu! SaveSess()
+    if !empty(expand(glob('%:p:h/.vim/session.vim')))
+      echo 'saving session'
+      execute 'mksession! %:p:h/.vim/session.vim'
+    endif
+  endfunction
+
+  fu! RestoreSess()
+    if !empty(expand(glob('%:p:h/.vim/session.vim')))
+      echo 'loading session'
+      execute 'so %:p:h/.vim/session.vim'
+      if bufexists(1)
+        for l in range(1, bufnr('$'))
+          if bufwinnr(l) == -1
+            exec 'sbuffer ' . l
+          endif
+        endfor
+      endif
+    endif
+  endfunction
+
+  autocmd VimLeave * call SaveSess()
+  autocmd VimEnter * nested call RestoreSess()
+  command! CreateSess call CreateSess()
+
+  set sessionoptions-=options

@@ -12,5 +12,8 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'AndrewRadev/tagalong.vim'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'mhinz/vim-signify'
+  Plug 'tpope/vim-fugitive'
+  Plug 'junegunn/gv.vim'
 call plug#end()
 
