@@ -1,4 +1,3 @@
-
   filetype on
   filetype plugin on
   filetype indent on
@@ -81,7 +80,8 @@
   map <M-j> <c-w>+
   map <M-k> <c-w>-
 
-  let mapleader=<space>   " leader is space
+  let mapleader=" "
+  nnoremap <space> <Nop>
   
   " edit/reload vimrc
   nmap <leader>ev :e $MYVIMRC<CR>
@@ -119,6 +119,7 @@
   nnoremap <S-TAB> :bprevious<CR>
 
   map <leader>f :Format<CR><ESC>
+  map <leader>= m'gg=G'
   
   "command Wd write|bdelete
   cnorea wd w\|:bd
@@ -154,5 +155,10 @@
   autocmd VimLeave * call SaveSess()
   autocmd VimEnter * nested call RestoreSess()
   command! CreateSess call CreateSess()
-
   set sessionoptions-=options
+
+  augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=300
+  augroup END
