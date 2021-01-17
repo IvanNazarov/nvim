@@ -14,9 +14,9 @@
     \ 'coc-pairs',
     \ 'coc-tsserver',
     \ 'coc-json',
-    \ 'coc-html',
     \ 'coc-css',
     \ 'coc-actions',
+    \ 'coc-html',
     \ ]
 
   if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')

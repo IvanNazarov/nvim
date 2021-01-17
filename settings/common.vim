@@ -19,9 +19,11 @@
   set t_Co=256
   syntax enable                " enable syntax processing
   colorscheme gruvbox 
+  "colorscheme xcodedarkhc
 
   set showtabline=2
 
+  "let g:airline_theme='xcodedarkhc'
   let g:airline_theme='gruvbox'
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 2
@@ -70,7 +72,7 @@
   set foldenable
   set foldlevelstart=10  " default folding
   set foldnestmax=10     " maximum nested fold
-  set foldmethod=syntax  " fold based on
+  set foldmethod=manual  " fold based on
 
   set splitright
   set splitbelow
@@ -80,8 +82,9 @@
   map <M-j> <c-w>+
   map <M-k> <c-w>-
 
-  let mapleader=" "
-  nnoremap <space> <Nop>
+  let mapleader=','
+  "let mapleader=" "
+  "nnoremap <space> <Nop>
   
   " edit/reload vimrc
   nmap <leader>ev :e $MYVIMRC<CR>
@@ -98,7 +101,7 @@
 
   " insert blank line before current line
   "without leaving insert mode
-  imap <leader>o <c-o><s-o>
+  "imap <leader>o <c-o><s-o>
 
   " j/k will move virtual lines (lines that wrap)
   noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -118,12 +121,17 @@
   nnoremap <TAB> :bnext<CR>
   nnoremap <S-TAB> :bprevious<CR>
 
-  map <leader>f :Format<CR><ESC>
-  map <leader>= m'gg=G'
+  "map <leader>f :Format<CR><ESC>
+  "map <leader>= m'gg=G'<CR><ESC>
   
   "command Wd write|bdelete
   cnorea wd w\|:bd
 
+  "augroup FastEscape
+    "autocmd!
+    "au InsertEnter * set timeoutlen=0
+    "au InsertLeave * set timeoutlen=300
+  "augroup END
   
   "session support
   fu! CreateSess()
@@ -133,14 +141,12 @@
 
   fu! SaveSess()
     if !empty(expand(glob('%:p:h/.vim/session.vim')))
-      echo 'saving session'
       execute 'mksession! %:p:h/.vim/session.vim'
     endif
   endfunction
 
   fu! RestoreSess()
     if !empty(expand(glob('%:p:h/.vim/session.vim')))
-      echo 'loading session'
       execute 'so %:p:h/.vim/session.vim'
       if bufexists(1)
         for l in range(1, bufnr('$'))
@@ -155,10 +161,6 @@
   autocmd VimLeave * call SaveSess()
   autocmd VimEnter * nested call RestoreSess()
   command! CreateSess call CreateSess()
+
   set sessionoptions-=options
 
-  augroup FastEscape
-    autocmd!
-    au InsertEnter * set timeoutlen=0
-    au InsertLeave * set timeoutlen=300
-  augroup END
