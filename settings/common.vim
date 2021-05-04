@@ -6,7 +6,7 @@
 
   set encoding=UTF-8
   set fileencoding=UTF-8
-  set guifont=FuraCode\ Nerd\ Font:h14 
+  set guifont=FuraCode\ Nerd\ Font:h14
   set path+=**
   set wildmenu
   set wildignore+=.git
