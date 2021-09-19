@@ -1,5 +1,6 @@
 call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'tpope/vim-surround'
+  Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'morhetz/gruvbox'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "  Plug 'scrooloose/nerdtree'
