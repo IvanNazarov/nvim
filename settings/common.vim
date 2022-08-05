@@ -18,13 +18,15 @@
 
   set t_Co=256
   syntax enable                " enable syntax processing
-  colorscheme gruvbox 
+  colorscheme dracula
+  "colorscheme gruvbox 
   "colorscheme xcodedarkhc
 
   set showtabline=2
 
   "let g:airline_theme='xcodedarkhc'
-  let g:airline_theme='gruvbox'
+  "let g:airline_theme='gruvbox'
+  let g:airline_theme='deus'
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 2
 

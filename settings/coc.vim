@@ -17,6 +17,7 @@
     \ 'coc-css',
     \ 'coc-actions',
     \ 'coc-html',
+    \ 'coc-explorer'
     \ ]
 
   if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
